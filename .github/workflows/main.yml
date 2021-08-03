@@ -1,7 +1,7 @@
 name: Terraform Examples Checks
 on: [push]
 jobs:
-  Versions_TFLint_v0.28.0:
+  Versions_TFLint_v0_28_0:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
