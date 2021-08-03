@@ -14,3 +14,25 @@ jobs:
         run: tflint --version
       - name: Check Terraform version
         run: terraform --version
+  Versions_TFLint_v0_30_0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+        with:
+          tflint_version: v0.30.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
+      - name: Check TFLint vesion
+        run: tflint --version
+      - name: Check Terraform version
+        run: terraform --version
+  Versions_ubuntu_only:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Check Terraform version
+        run: terraform --version
+      - name: Check TFLint vesion
+        run: tflint --version
