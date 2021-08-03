@@ -1,7 +1,7 @@
 name: Terraform Examples Checks
 on: [push]
 jobs:
-  TFLint:
+  Versions_TFLint_v0.28.0:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -10,10 +10,7 @@ jobs:
         uses: terraform-linters/setup-tflint@v1
         with:
           tflint_version: v0.28.0  # Must be specified. See: https://github.com/terraform-linters/tflint/releases for latest versions
-      - name: Run TFLint
-        # info level there because of WARNs and ERRs seen occasionally only in GitHub actions logs
-        run: find ${{ github.workspace }} | grep tf$ | xargs -n1 dirname | xargs -IXXX -n1 /bin/sh -c 'set -o errexit; cd XXX; pwd; tflint --loglevel=info .; cd - >/dev/null'
-      - name: Run Check Index
-        run: ${{ github.workspace }}/bin/check_index.sh
-      - name: Run Check Scripts
-        run: ${{ github.workspace }}/bin/check_scripts.sh
+      - name: Check TFLint vesion
+        run: tflint --version
+      - name: Check Terraform version
+        run: terraform --version
